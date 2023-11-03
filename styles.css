@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* || VARIABLES */
+
+:root {
+  --color-black: #000000;
+  --color-red: #e72413;
+  --color-white: #ffffff;
+  
+  --font-family-noto-sans-mono: "Noto Sans Mono", monospace;
+  --font-family-roboto-slab: "Roboto Slab", serif;
+}
+
+/* || GENERAL STYLES */
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-size: 16px;
+}
+
+header {
+  text-align: end;
+}
+
+h1 {
+  font-size: 3rem;
+  font-family: var(--font-family-roboto-slab);
+  text-transform: uppercase;
+}
+
+/* Make first letter of each div inside h1 tag red.
+h1 text is in divs for ease of putting on separate lines per the design. */
+h1 > div::first-letter {
+  color: var(--color-red);
+}
+
+nav > ul > li {
+  list-style-type: none;
+}
+
+
+.hide-nav {
+  display: none;
+}
