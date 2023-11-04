@@ -16,8 +16,11 @@
 body {
   background-color: var(--color-white);
   color: var(--color-black);
+  font-family: var(--font-family-roboto-slab);
   font-size: 16px;
 }
+
+/* || Main Header */
 
 header {
   text-align: end;
@@ -25,7 +28,6 @@ header {
 
 h1 {
   font-size: 3rem;
-  font-family: var(--font-family-roboto-slab);
   text-transform: uppercase;
 }
 
@@ -35,11 +37,73 @@ h1 > div::first-letter {
   color: var(--color-red);
 }
 
-nav > ul > li {
+/* || Navigation */
+
+#nav-button {
+  margin: 0.5em;
+}
+
+#nav-container {
+  background-color: var(--color-white);
+  border: solid black 1px;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.nav-content {
+  margin: 1em;
+}
+
+.nav-list {
   list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.nav-list > li {
+  margin: 1em;
 }
 
 
-.hide-nav {
-  display: none;
+/* 
+  Bootstrap breakpoints reference:
+  https://getbootstrap.com/docs/5.3/layout/breakpoints/#media-queries
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link 
+  https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design#media_queries 
+
+  not sure if I should split styles into separate sheets yet
+*/
+
+/* X-Small devices (portrait phones, less than 576px) */
+/* No media query for `xs` since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+
 }

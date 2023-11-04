@@ -13,7 +13,7 @@ const userFacingStrings = {
     viewA11yMode: 'View in "Accessibility Mode"'
 };
 
-/** Set user facing strings */
+/** set Nav Menu user-facing strings */
 document.getElementById('nav-a11y-mode').textContent = userFacingStrings.nav_a11yMode;
 document.getElementById('nav-about').textContent = userFacingStrings.nav_about;
 document.getElementById('nav-experience').textContent = userFacingStrings.nav_experience;
@@ -25,12 +25,11 @@ document.getElementById('nav-contact').textContent = userFacingStrings.nav_conta
 
 document.getElementById('view-a11y-mode').textContent = userFacingStrings.viewA11yMode;
 
-function toggleNav() {
-    // toggle nav visibility
-    const navList = document.getElementById('nav-list');
-    navList.classList.toggle('hide-nav');
+/** set Header user-facing strings */
 
-    // toggle WAI-ARIA aria -expanded value
+function toggleNav(width) {
+    document.getElementById('nav-container').style.width = width;
+
     const navButton = document.getElementById('nav-button');
     const isAriaExpanded = navButton.getAttribute('aria-expanded');
     navButton.setAttribute('aria-expanded', isAriaExpanded === 'true' ? 'false' : 'true');
