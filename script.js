@@ -1,32 +1,190 @@
-/** Store user facing strings for ease of update and for if I ever want to add translations. */
-const userFacingStrings = {
-    // viewA11yMode: 'The following screens contain various animations and simple games. If you would like to view my portfolio without these features, need reduced motion, or greater accessibility, please click "Accessibility Mode". Thank you for visiting!',
-    nav_a11yMode: 'Accessibility Mode',
-    nav_about: 'About',
-    nav_experience: 'Experience',
-    nav_projects: 'Projects',
-    nav_skills: 'Skills',
-    nav_education: 'Education',
-    nav_certifications: 'Certifications',
-    nav_contact: 'Contact',
+const ids = {
+    aboutAnchor: 'about-anchor',
+    experienceAnchor: 'experience-anchor',
+    projectsAnchor: 'projects-anchor',
+    skillsAnchor: 'skills-anchor',
+    educationAnchor: 'education-anchor',
+    certificationsAnchor: 'certifications-anchor',
+}
+
+const aboutSection = {
+    header: 'About',
+    description: 'I am an INNOVATIVE developer that enjoys the CREATIVE process of designing solutions in an AGILE environment. I believe that strong COLLABORATION drives success.',
+}
+
+const experienceSection = {
+    header: 'Experience',
+    experience: [
+        {
+            company: 'General Motors',
+            location: 'Chandler, AZ',
+            title: 'Software Developer',
+            duration: 'July 2020 - October 2023',
+            accomplishments: [
+                'Received the 2023 Excellence in Technology Award for my vital contributions to eliminating the need for Excel sheets, reducing business process time by 50%, and facilitating the successful launch of the 2024 Cadillac Lyriq.',
+                'Collaborated closely with a cross-functional team to design, build, test, and deploy web applications utilizing  Angular, TypeScript, HTML, SCSS, Java, Spring, Node.js, PostgreSQL, Azure DevOps, and PCF.',
+            ],
+        },
+        {
+            company: 'University of Denver',
+            location: 'Denver, CO',
+            title: 'Computer Science Teaching Assistant',
+            duration: 'September 2019 - June 2020',
+            accomplishments: [
+                'Simplified object oriented programming (OOP) topics and tutored students in Java for courses Intro to Computer Science 1-3.',
+                'Evaluated assignments for Discrete Structures, Intro to Computer Science 1, and Intro to Algorithms & Data Structures, providing detailed feedback for students and professors.',
+            ],
+        },
+        {
+            company: 'CodeSpire',
+            location: 'Denver, CO',
+            title: 'Programming Instructor',
+            duration: 'February 2018 - August 2018',
+            accomplishments: [
+                'Instructed students ages 10-18 in building portfolios with HTML, CSS, and vanilla JavaScript, covering topics including page layout, inline styles, style classes, animation, site navigation, and testing.',
+                'Performed administrative tasks such as managing course registrations, communicating with customers, handling manager correspondence, and distributing advertisements.',
+            ],
+        },
+        {
+            company: 'University of Denver',
+            location: 'Denver, CO',
+            title: 'Coding Summer Camp Instructor',
+            duration: 'June 2017 - July 2017',
+            accomplishments: [
+                'Guided students through building games, animations, photo manipulation programs, and other programs for creating graphical designs utilizing a simplified form of Java known as Processing. ',
+                'Taught students fundamental programming concepts such as classes, functions, loops, conditional statements, recursion, and debugging.',
+            ],
+        },
+        {
+            company: 'Sprouts Farmers Market',
+            location: 'Denver, CO',
+            title: 'Courtesy Clerk',
+            duration: 'June 2016 - August 2016',
+            accomplishments: [
+                'Efficiently and accurately scanned items, operated cash register, and handled cash and card transactions, keeping a 100% accurate register at end of shift counts.',
+                'Ensured customer satisfaction by carefully bagging groceries, considering bag weight for customer convenience and safety, as well as properly bagging items preventing product damage.'
+            ],
+        },
+    ],
+}
+
+const navigation = [
+    {
+        content: aboutSection.header,
+        href: '#',
+    },
+    {
+        content: experienceSection.header,
+        href: '#',
+    },
+    {
+        content: 'temp1',
+        href: '#',
+    },
+    {
+        content: 'temp2',
+        href: '#',
+    },
+    {
+        content: 'temp3',
+        href: '#',
+    },
+]
+
+generateA11ySiteContent();
+
+function createNavigation() {
     
-    viewA11yMode: 'View in "Accessibility Mode"'
-};
+}
 
-/** set Nav Menu user-facing strings */
-document.getElementById('nav-a11y-mode').textContent = userFacingStrings.nav_a11yMode;
-document.getElementById('nav-about').textContent = userFacingStrings.nav_about;
-document.getElementById('nav-experience').textContent = userFacingStrings.nav_experience;
-document.getElementById('nav-projects').textContent = userFacingStrings.nav_projects;
-document.getElementById('nav-skills').textContent = userFacingStrings.nav_skills;
-document.getElementById('nav-education').textContent = userFacingStrings.nav_education;
-document.getElementById('nav-certifications').textContent = userFacingStrings.nav_certifications;
-document.getElementById('nav-contact').textContent = userFacingStrings.nav_contact;
+function generateA11ySiteContent() {
+    a11yAbout();
+    a11yExperience();
+    a11yProjects();
+    a11ySkills();
+    a11yEducation();
+    a11yCertifications();
+}
 
-document.getElementById('view-a11y-mode').textContent = userFacingStrings.viewA11yMode;
+function generateInteractiveSiteContent() {
+    // nothing for now
+}
 
-/** set Header user-facing strings */
+//#region - functions to generate accessible plain format sections
+function a11yAbout() {
+    const aboutAnchor = document.getElementById(ids.aboutAnchor);
+    
+    // create About header and description
+    const h2 = createElement('h2', aboutSection.header);
+    const p = createElement('p', aboutSection.description);
 
+    // append elements to anchor
+    aboutAnchor.appendChild(h2);
+    aboutAnchor.appendChild(p);
+}
+
+function a11yExperience() {
+    const experienceAnchor = document.getElementById(ids.experienceAnchor);
+    const h2 = createElement('h2', experienceSection.header); // create Experience header
+    const xpElements = [h2];
+
+    for(let i = 0; i < experienceSection.experience.length; i++) {
+        const title = createElement('h3', experienceSection.experience[i].title); // create Job Title header
+        const company = createElement('div', experienceSection.experience[i].company); // create Company element
+        const location = createElement('div', experienceSection.experience[i].location); // create Location element
+        const duration = createElement('div', experienceSection.experience[i].duration); // create Duration element
+        const accomplishments = createUnorderedList(experienceSection.experience[i].accomplishments); // create Accomplishments lists
+
+        xpElements.push(title);
+        xpElements.push(company);
+        xpElements.push(location);
+        xpElements.push(duration);
+        xpElements.push(accomplishments);
+    }
+
+    xpElements.forEach(element => experienceAnchor.appendChild(element));
+}
+
+function a11yProjects() {
+
+}
+
+function a11ySkills() {
+
+}
+
+function a11yEducation() {
+
+}
+
+function a11yCertifications() {
+
+}
+//#endregion - functions to generate accessible plain format sections
+
+function createElement(tag, content) {
+    const element = document.createElement(tag);
+
+    if (content) {
+        const elementContent = document.createTextNode(content);
+        element.appendChild(elementContent);
+    }
+
+    return element;
+}
+
+function createUnorderedList(listItems) {
+    const ul = createElement('ul', null);
+
+    for(let i = 0; i < listItems.length; i++) {
+        const li = createElement('li', listItems[i]);
+        ul.appendChild(li);
+    }
+
+    return ul;
+}
+
+// open and close mobile navigation burger menu
 function toggleNav(width) {
     document.getElementById('nav-container').style.width = width;
 
@@ -34,9 +192,3 @@ function toggleNav(width) {
     const isAriaExpanded = navButton.getAttribute('aria-expanded');
     navButton.setAttribute('aria-expanded', isAriaExpanded === 'true' ? 'false' : 'true');
 }
-
-/**
- * https://www.accede-web.com/en/guidelines/rich-interface-components/hamburger-menu/#:~:text=The%20%3Cnav%20role%3D%22navigation,with%20a%20tag. 
- * 
- * https://softwareengineering.stackexchange.com/questions/326369/how-to-organize-localization-string-resources
- */
