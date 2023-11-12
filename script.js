@@ -1,10 +1,16 @@
 const ids = {
-    aboutAnchor: 'about-anchor',
-    experienceAnchor: 'experience-anchor',
-    projectsAnchor: 'projects-anchor',
-    skillsAnchor: 'skills-anchor',
-    educationAnchor: 'education-anchor',
-    certificationsAnchor: 'certifications-anchor',
+    aboutContainer: 'about-container',
+    experienceContainer: 'experience-container',
+    projectsContainer: 'projects-container',
+    skillsContainer: 'skills-container',
+    educationContainer: 'education-container',
+    certificationsAnchor: 'certifications-container',
+
+    experience5: 'experience5',
+    experience4: 'experience4',
+    experience3: 'experience3',
+    experience2: 'experience2',
+    experience1: 'experience1',
 }
 
 const aboutSection = {
@@ -16,6 +22,7 @@ const experienceSection = {
     header: 'Experience',
     experience: [
         {
+            id: ids.experience5,
             company: 'General Motors',
             location: 'Chandler, AZ',
             title: 'Software Developer',
@@ -26,6 +33,7 @@ const experienceSection = {
             ],
         },
         {
+            id: ids.experience4,
             company: 'University of Denver',
             location: 'Denver, CO',
             title: 'Computer Science Teaching Assistant',
@@ -36,6 +44,7 @@ const experienceSection = {
             ],
         },
         {
+            id: ids.experience3,
             company: 'CodeSpire',
             location: 'Denver, CO',
             title: 'Programming Instructor',
@@ -46,6 +55,7 @@ const experienceSection = {
             ],
         },
         {
+            id: ids.experience2,
             company: 'University of Denver',
             location: 'Denver, CO',
             title: 'Coding Summer Camp Instructor',
@@ -56,6 +66,7 @@ const experienceSection = {
             ],
         },
         {
+            id: ids.experience1,
             company: 'Sprouts Farmers Market',
             location: 'Denver, CO',
             title: 'Courtesy Clerk',
@@ -68,51 +79,24 @@ const experienceSection = {
     ],
 }
 
-const navigation = [
-    {
-        content: aboutSection.header,
-        href: '#',
-    },
-    {
-        content: experienceSection.header,
-        href: '#',
-    },
-    {
-        content: 'temp1',
-        href: '#',
-    },
-    {
-        content: 'temp2',
-        href: '#',
-    },
-    {
-        content: 'temp3',
-        href: '#',
-    },
-]
-
-generateA11ySiteContent();
+generateSiteContent();
 
 function createNavigation() {
-    
+
 }
 
-function generateA11ySiteContent() {
-    a11yAbout();
-    a11yExperience();
-    a11yProjects();
-    a11ySkills();
-    a11yEducation();
-    a11yCertifications();
-}
-
-function generateInteractiveSiteContent() {
-    // nothing for now
+function generateSiteContent() {
+    // createAbout();
+    createExperience();
+    createProjects();
+    createSkills();
+    createEducation();
+    createCertifications();
 }
 
 //#region - functions to generate accessible plain format sections
-function a11yAbout() {
-    const aboutAnchor = document.getElementById(ids.aboutAnchor);
+function createAbout() {
+    const aboutAnchor = document.getElementById(ids.aboutContainer);
     
     // create About header and description
     const h2 = createElement('h2', aboutSection.header);
@@ -123,46 +107,53 @@ function a11yAbout() {
     aboutAnchor.appendChild(p);
 }
 
-function a11yExperience() {
-    const experienceAnchor = document.getElementById(ids.experienceAnchor);
-    const h2 = createElement('h2', experienceSection.header); // create Experience header
-    const xpElements = [h2];
+function createExperience() {
+    const experienceAnchor = document.getElementById(ids.experienceContainer);
+    // const h2 = createElement('h2', experienceSection.header); // create Experience header
+    // const xpElements = [h2];
+    const xpElements = [];
 
     for(let i = 0; i < experienceSection.experience.length; i++) {
-        const title = createElement('h3', experienceSection.experience[i].title); // create Job Title header
-        const company = createElement('div', experienceSection.experience[i].company); // create Company element
-        const location = createElement('div', experienceSection.experience[i].location); // create Location element
-        const duration = createElement('div', experienceSection.experience[i].duration); // create Duration element
-        const accomplishments = createUnorderedList(experienceSection.experience[i].accomplishments); // create Accomplishments lists
+        const xp = experienceSection.experience[i];
+
+        const title = createElement('h3', xp.title, xp.id);
+        const company = createElement('div', xp.company, null);
+        // const location = createElement('div', xp.location, null);
+        const duration = createElement('div', xp.duration, null);
+        const accomplishments = createUnorderedList(xp.accomplishments, null);
 
         xpElements.push(title);
         xpElements.push(company);
-        xpElements.push(location);
+        // xpElements.push(location);
         xpElements.push(duration);
         xpElements.push(accomplishments);
     }
 
-    xpElements.forEach(element => experienceAnchor.appendChild(element));
+    console.log('xpElements', xpElements);
+    xpElements.forEach(element => {
+        console.log('element', element);
+        experienceAnchor.appendChild(element)
+    });
 }
 
-function a11yProjects() {
-
-}
-
-function a11ySkills() {
-
-}
-
-function a11yEducation() {
+function createProjects() {
 
 }
 
-function a11yCertifications() {
+function createSkills() {
+
+}
+
+function createEducation() {
+
+}
+
+function createCertifications() {
 
 }
 //#endregion - functions to generate accessible plain format sections
 
-function createElement(tag, content) {
+function createElement(tag, content, id) {
     const element = document.createElement(tag);
 
     if (content) {
@@ -170,11 +161,15 @@ function createElement(tag, content) {
         element.appendChild(elementContent);
     }
 
+    if (id) {
+        element.id = id;
+    }
+
     return element;
 }
 
 function createUnorderedList(listItems) {
-    const ul = createElement('ul', null);
+    const ul = createElement('ul', null, null);
 
     for(let i = 0; i < listItems.length; i++) {
         const li = createElement('li', listItems[i]);
