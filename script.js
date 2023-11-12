@@ -34,3 +34,9 @@ function toggleNav(width) {
     const isAriaExpanded = navButton.getAttribute('aria-expanded');
     navButton.setAttribute('aria-expanded', isAriaExpanded === 'true' ? 'false' : 'true');
 }
+
+/**
+ * https://www.accede-web.com/en/guidelines/rich-interface-components/hamburger-menu/#:~:text=The%20%3Cnav%20role%3D%22navigation,with%20a%20tag. 
+ * 
+ * https://softwareengineering.stackexchange.com/questions/326369/how-to-organize-localization-string-resources
+ */
