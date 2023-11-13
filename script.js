@@ -116,17 +116,26 @@ function createExperience() {
     for(let i = 0; i < experienceSection.experience.length; i++) {
         const xp = experienceSection.experience[i];
 
+        const div = createElement('div', null, null);
+        // div.setAttribute('class', 'experience-content');
+
         const title = createElement('h3', xp.title, xp.id);
         const company = createElement('div', xp.company, null);
         // const location = createElement('div', xp.location, null);
         const duration = createElement('div', xp.duration, null);
         const accomplishments = createUnorderedList(xp.accomplishments, null);
 
-        xpElements.push(title);
-        xpElements.push(company);
-        // xpElements.push(location);
-        xpElements.push(duration);
-        xpElements.push(accomplishments);
+        div.appendChild(title);
+        div.appendChild(company);
+        div.appendChild(duration);
+        div.appendChild(accomplishments);
+
+        xpElements.push(div);
+        // xpElements.push(title);
+        // xpElements.push(company);
+        // // xpElements.push(location);
+        // xpElements.push(duration);
+        // xpElements.push(accomplishments);
     }
 
     console.log('xpElements', xpElements);

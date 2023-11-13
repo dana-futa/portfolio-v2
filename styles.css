@@ -43,7 +43,7 @@ a:hover {
 
 header {
     background-color: var(--color-white);
-    border-bottom: solid var(--color-black);
+    /* border-bottom: solid var(--color-black); */
     padding-bottom: 0.25em;
     position: sticky;
     top: 0;
@@ -119,13 +119,13 @@ header {
 /* || Main Container*/
 
 .main-container {
-    margin: 0.5em;
+    margin: 4em;
 }
 
 /* || Name Container */
 
 #name-container {
-    margin: 2em auto 6em auto;
+    margin: 2em auto 4em auto;
     text-align: center; /* center h1 on the page */
 }
 
@@ -142,4 +142,23 @@ h1 {
 h1 text is in divs for ease of putting on separate lines per the design. */
 h1 > div::first-letter {
     color: var(--color-red);
+}
+
+/* || Education Container */ 
+
+#education-container {
+    text-align: center;
+}
+
+#education-container h2 {
+    text-align: left;
+}
+
+.education-content {
+    border: solid var(--color-black);
+    display: inline-block;
+    margin: 0 2em;
+    padding: 2em;
+    text-align: left;
+    width: 32em;
 }
