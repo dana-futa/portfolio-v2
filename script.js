@@ -4,13 +4,16 @@ const ids = {
     projectsContainer: 'projects-container',
     skillsContainer: 'skills-container',
     educationContainer: 'education-container',
-    certificationsAnchor: 'certifications-container',
+    certificationsContainer: 'certifications-container',
 
     experience5: 'experience5',
     experience4: 'experience4',
     experience3: 'experience3',
     experience2: 'experience2',
     experience1: 'experience1',
+
+    education2: 'education2',
+    education1: 'education1',
 }
 
 const aboutSection = {
@@ -79,6 +82,34 @@ const experienceSection = {
     ],
 }
 
+const educationSection = {
+    header: 'Education',
+    education: [
+        {
+            id: ids.education2,
+            degreeType: 'Bachelors of Science in Computer Science',
+            institution: 'University of Denver',
+            location: 'Denver, CO',
+            stats: [
+                'GPA: 3.94',
+                'Major: Computer Science',
+                'Minors: Mathematics, Japanese',
+            ],
+        },
+        {
+            id: ids.education1,
+            degreeType: 'Japanese Language Program Certificate of Completion',
+            institution: 'Waseda University / 早稲田大学',
+            location: 'Tokyo, Japan',
+            stats: [
+                'GPA: 3.5',
+                'Area of Study: Introductory Japanese Language',
+                '5 month Study Abroad Program',
+            ],
+        }
+    ],
+}
+
 generateSiteContent();
 
 function createNavigation() {
@@ -86,7 +117,7 @@ function createNavigation() {
 }
 
 function generateSiteContent() {
-    // createAbout();
+    createAbout();
     createExperience();
     createProjects();
     createSkills();
@@ -96,32 +127,24 @@ function generateSiteContent() {
 
 //#region - functions to generate accessible plain format sections
 function createAbout() {
-    const aboutAnchor = document.getElementById(ids.aboutContainer);
+    const aboutContainer = document.getElementById(ids.aboutContainer);
     
-    // create About header and description
-    const h2 = createElement('h2', aboutSection.header);
+    // create About description and append to container
     const p = createElement('p', aboutSection.description);
-
-    // append elements to anchor
-    aboutAnchor.appendChild(h2);
-    aboutAnchor.appendChild(p);
+    aboutContainer.appendChild(p);
 }
 
 function createExperience() {
-    const experienceAnchor = document.getElementById(ids.experienceContainer);
-    // const h2 = createElement('h2', experienceSection.header); // create Experience header
-    // const xpElements = [h2];
+    const experienceContainer = document.getElementById(ids.experienceContainer);
     const xpElements = [];
 
+    // create Experience elements
     for(let i = 0; i < experienceSection.experience.length; i++) {
         const xp = experienceSection.experience[i];
 
         const div = createElement('div', null, null);
-        // div.setAttribute('class', 'experience-content');
-
         const title = createElement('h3', xp.title, xp.id);
         const company = createElement('div', xp.company, null);
-        // const location = createElement('div', xp.location, null);
         const duration = createElement('div', xp.duration, null);
         const accomplishments = createUnorderedList(xp.accomplishments, null);
 
@@ -131,18 +154,10 @@ function createExperience() {
         div.appendChild(accomplishments);
 
         xpElements.push(div);
-        // xpElements.push(title);
-        // xpElements.push(company);
-        // // xpElements.push(location);
-        // xpElements.push(duration);
-        // xpElements.push(accomplishments);
     }
 
-    console.log('xpElements', xpElements);
-    xpElements.forEach(element => {
-        console.log('element', element);
-        experienceAnchor.appendChild(element)
-    });
+    // append all experience to container
+    xpElements.forEach(element => experienceContainer.appendChild(element));
 }
 
 function createProjects() {
@@ -154,7 +169,29 @@ function createSkills() {
 }
 
 function createEducation() {
+    const educationContainer = document.getElementById(ids.educationContainer);
+    const eduElements = [];
 
+    // create Education elements
+    for(let i = 0; i < educationSection.education.length; i++) {
+        const edu = educationSection.education[i];
+
+        const div = createElement('div', null, null);
+        const degreeType = createElement('h3', edu.degreeType, edu.id);
+        const institution = createElement('div', edu.institution, null);
+        const location = createElement('div', edu.location, null);
+        const stats = createUnorderedList(edu.stats, null);
+
+        div.appendChild(degreeType);
+        div.appendChild(institution);
+        div.appendChild(location);
+        div.appendChild(stats);
+
+        eduElements.push(div);
+    }
+
+    // append all education to container
+    eduElements.forEach(element => educationContainer.appendChild(element));
 }
 
 function createCertifications() {
@@ -186,13 +223,4 @@ function createUnorderedList(listItems) {
     }
 
     return ul;
-}
-
-// open and close mobile navigation burger menu
-function toggleNav(width) {
-    document.getElementById('nav-container').style.width = width;
-
-    const navButton = document.getElementById('nav-button');
-    const isAriaExpanded = navButton.getAttribute('aria-expanded');
-    navButton.setAttribute('aria-expanded', isAriaExpanded === 'true' ? 'false' : 'true');
 }

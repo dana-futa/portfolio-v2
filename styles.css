@@ -15,7 +15,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 3.25em; /* height of sticky header/nav */
+    scroll-padding-top: 3.25em; /* height of sticky header/nav, set this so page anchors jump to right location */
 }
 
 body {
@@ -31,7 +31,6 @@ a {
     padding-bottom: 0.3em;
     text-decoration-thickness: 0.2rem;
     text-underline-offset: 0.25rem;
-    /* transition: all 0.2s; */
 }
 
 a:hover {
@@ -43,7 +42,6 @@ a:hover {
 
 header {
     background-color: var(--color-white);
-    /* border-bottom: solid var(--color-black); */
     padding-bottom: 0.25em;
     position: sticky;
     top: 0;
@@ -122,6 +120,17 @@ header {
     margin: 4em;
 }
 
+#about-container, 
+#experience-container, 
+#projects-container, 
+#skills-container,
+#education-container,
+#certifications-container,
+#contact-container
+{
+    margin: 0 8em;
+}
+
 /* || Name Container */
 
 #name-container {
@@ -142,23 +151,4 @@ h1 {
 h1 text is in divs for ease of putting on separate lines per the design. */
 h1 > div::first-letter {
     color: var(--color-red);
-}
-
-/* || Education Container */ 
-
-#education-container {
-    text-align: center;
-}
-
-#education-container h2 {
-    text-align: left;
-}
-
-.education-content {
-    border: solid var(--color-black);
-    display: inline-block;
-    margin: 0 2em;
-    padding: 2em;
-    text-align: left;
-    width: 32em;
 }
