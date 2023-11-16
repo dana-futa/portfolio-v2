@@ -3,43 +3,152 @@
 /* || VARIABLES */
 
 :root {
-  --color-black: #000000;
-  --color-red: #e72413;
-  --color-white: #ffffff;
-  
-  --font-family-noto-sans-mono: "Noto Sans Mono", monospace;
-  --font-family-roboto-slab: "Roboto Slab", serif;
+    --color-black: #000000;
+    --color-red: #e72413;
+    --color-white: #ffffff;
+
+    --font-family-noto-sans-mono: "Noto Sans Mono", monospace;
+    --font-family-roboto-slab: "Roboto Slab", serif;
 }
 
 /* || GENERAL STYLES */
 
-body {
-  background-color: var(--color-white);
-  color: var(--color-black);
-  font-size: 16px;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 3.25em; /* height of sticky header/nav, set this so page anchors jump to right location */
 }
 
+body {
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-family: var(--font-family-roboto-slab);
+    font-size: 16px;
+    margin: 0;
+}
+
+a {
+    border-bottom: none;
+    padding-bottom: 0.3em;
+    text-decoration-thickness: 0.2rem;
+    text-underline-offset: 0.25rem;
+}
+
+a:hover {
+    font-style: italic;
+    border-bottom: 0.4rem double var(--color-red);
+}
+
+/* || Main Header */
+
 header {
-  text-align: end;
+    background-color: var(--color-white);
+    padding-bottom: 0.25em;
+    position: sticky;
+    top: 0;
+    text-align: end;
+}
+
+/* || Navigation */
+
+.navbar {
+    overflow: hidden;
+}
+
+.navbar a {
+    color: var(--color-black);
+}
+
+.navbar svg {
+    margin-left: 0.25em;
+}
+
+.navbar > ul > li {
+    display: inline-block;
+    padding: 0.75em;
+}
+
+.main-nav {
+    margin: 0;
+}
+
+.main-nav > li:last-child {
+    padding-right: 1.5em;
+}
+
+.subnav ul {
+    padding: 0;
+}
+
+.subnav > a:hover {
+    border-top: 0.4rem double var(--color-red);
+}
+
+.subnav-content {
+    background-color: var(--color-white);
+    border: solid var(--color-black);
+    position: absolute;
+    text-align: start;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0s linear;
+}
+
+.subnav-content li {
+    list-style-type: none;
+    padding: 0.75em;
+}
+
+.subnav-content li:last-child {
+    padding-bottom: 1.5em;
+}
+
+/* add double top border on subnav-parent-link on subnav hover */
+.subnav:hover .subnav-parent-link {
+    font-style: italic;
+    border-top: 0.4rem double var(--color-red);
+}
+
+/* make subnav-content visible on subnav hover */
+.subnav:hover .subnav-content {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* || Main Container*/
+
+.main-container {
+    margin: 4em;
+}
+
+#about-container, 
+#experience-container, 
+#projects-container, 
+#skills-container,
+#education-container,
+#certifications-container,
+#contact-container
+{
+    margin: 0 8em;
+}
+
+/* || Name Container */
+
+#name-container {
+    margin: 2em auto 4em auto;
+    text-align: center; /* center h1 on the page */
 }
 
 h1 {
-  font-size: 3rem;
-  font-family: var(--font-family-roboto-slab);
-  text-transform: uppercase;
+    display: inline-block; /* make text keep left alignment, even though element is centered */
+    font-size: 13rem;
+    margin: 0;
+    text-align: left; /* make text keep left alignment, even though element is centered */
+    text-transform: uppercase;
+    width: fit-content;
 }
 
 /* Make first letter of each div inside h1 tag red.
 h1 text is in divs for ease of putting on separate lines per the design. */
 h1 > div::first-letter {
-  color: var(--color-red);
-}
-
-nav > ul > li {
-  list-style-type: none;
-}
-
-
-.hide-nav {
-  display: none;
+    color: var(--color-red);
 }
