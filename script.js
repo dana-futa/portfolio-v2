@@ -32,7 +32,16 @@ const experienceSection = {
             duration: 'July 2020 - October 2023',
             accomplishments: [
                 'Received the 2023 Excellence in Technology Award for my vital contributions to eliminating the need for Excel sheets, reducing business process time by 50%, and facilitating the successful launch of the 2024 Cadillac Lyriq.',
-                'Collaborated closely with a cross-functional team to design, build, test, and deploy web applications utilizing  Angular, TypeScript, HTML, SCSS, Java, Spring, Node.js, PostgreSQL, Azure DevOps, and PCF.',
+                'Collaborated closely with a cross-functional team to design, build, test, and deploy web applications utilizing  Angular, TypeScript, JavaScript, HTML, SCSS, Java, Spring, PostgreSQL, Azure DevOps, and PCF.',
+                'Developed cross-browser compatible tables, data comparison tools, and other components with responsive and accessible design for Angular front end of a web app used by 6000+ engineers daily.',
+                'Improved application resiliency and code quality by increasing JUnit test coverage, unit testing, automation testing, and resolving 230+ bugs, leading to a more seamless user experience.',
+                'Spearheaded language support technology research, presented software suggestions, and executed a solution for international users in 6 languages, enabling success for a wider user base.',
+                'Implemented a full stack solution for the soft delete and recovery feature. Designed PostgreSQL stored procedures, Java REST APIs, and Angular components that simplified the business process of complying with data retention policies.',
+                'Led the development and execution of the user preference feature, enabling users to customize FMEA form sheet grids in 5 ways, resulting in enhanced productivity.',
+                'Performed a full stack overhaul of the user group and permission system, removing dead and bloated code and prepping the application for future roles, resulting in improved security, data integrity, and performance.',
+                'Demonstrated expertise in resolving production issues by collaborating with end users, swiftly diagnosing and designing solutions, and coordinating deployments within 24 hours of ticket creation.',
+                'Produced and maintained comprehensive documentation covering software architecture, implementation, and deployment procedures, creating a culture of transparency and knowledge sharing.',
+                'Actively engaged in all Agile development practices, encompassing daily stand-up, sprint planning, requirement sessions, UI/UX design sessions, and code reviews, lending to efficient project management and customer delight.',
             ],
         },
         {
@@ -219,6 +228,7 @@ function createUnorderedList(listItems) {
 
     for(let i = 0; i < listItems.length; i++) {
         const li = createElement('li', listItems[i]);
+        li.setAttribute('class', 'li-margin-bottom');
         ul.appendChild(li);
     }
 
