@@ -38,6 +38,10 @@ a:hover {
     border-bottom: 0.4rem double var(--color-red);
 }
 
+.li-margin-bottom {
+    margin-bottom: 0.5em;
+}
+
 /* || Main Header */
 
 header {
