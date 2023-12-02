@@ -27,12 +27,11 @@ const experienceSection = {
         {
             id: ids.experience5,
             company: 'General Motors',
-            location: 'Chandler, AZ',
             title: 'Software Developer',
             duration: 'July 2020 - October 2023',
             accomplishments: [
                 'Received the 2023 Excellence in Technology Award for my vital contributions to eliminating the need for Excel sheets, reducing business process time by 50%, and facilitating the successful launch of the 2024 Cadillac Lyriq.',
-                'Collaborated closely with a cross-functional team to design, build, test, and deploy web applications utilizing  Angular, TypeScript, JavaScript, HTML, SCSS, Java, Spring, PostgreSQL, Azure DevOps, and PCF.',
+                'Collaborated closely with a cross-functional team to design, build, test, and deploy web applications utilizing Angular, TypeScript, JavaScript, HTML, SCSS, Java, Spring, PostgreSQL, Azure DevOps, and PCF.',
                 'Developed cross-browser compatible tables, data comparison tools, and other components with responsive and accessible design for Angular front end of a web app used by 6000+ engineers daily.',
                 'Improved application resiliency and code quality by increasing JUnit test coverage, unit testing, automation testing, and resolving 230+ bugs, leading to a more seamless user experience.',
                 'Spearheaded language support technology research, presented software suggestions, and executed a solution for international users in 6 languages, enabling success for a wider user base.',
@@ -47,7 +46,6 @@ const experienceSection = {
         {
             id: ids.experience4,
             company: 'University of Denver',
-            location: 'Denver, CO',
             title: 'Computer Science Teaching Assistant',
             duration: 'September 2019 - June 2020',
             accomplishments: [
@@ -58,7 +56,6 @@ const experienceSection = {
         {
             id: ids.experience3,
             company: 'CodeSpire',
-            location: 'Denver, CO',
             title: 'Programming Instructor',
             duration: 'February 2018 - August 2018',
             accomplishments: [
@@ -69,7 +66,6 @@ const experienceSection = {
         {
             id: ids.experience2,
             company: 'University of Denver',
-            location: 'Denver, CO',
             title: 'Coding Summer Camp Instructor',
             duration: 'June 2017 - July 2017',
             accomplishments: [
@@ -80,7 +76,6 @@ const experienceSection = {
         {
             id: ids.experience1,
             company: 'Sprouts Farmers Market',
-            location: 'Denver, CO',
             title: 'Courtesy Clerk',
             duration: 'June 2016 - August 2016',
             accomplishments: [
@@ -214,6 +209,7 @@ function createElement(tag, content, id) {
     if (content) {
         const elementContent = document.createTextNode(content);
         element.appendChild(elementContent);
+        // element.insertAdjacentHTML("beforeend", content);
     }
 
     if (id) {
